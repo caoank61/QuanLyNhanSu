@@ -1,8 +1,8 @@
 # QuanLyNhanSu
 BTL LTW
-Thành viên nhóm : 1. Nguyễn Phạm Thuỳ Dung
-                  2. Nguyễn Minh Phúc 
-                  3. Nguyễn Cao An
-                  4. Lê Thanh Nhân
-                  5. Nguyễn Phạm Thành Hưng
-                  
+Member:   1. Phạm Nguyễn Thuỳ Dung
+          2. Nguyễn Minh Phúc 
+          3. Nguyễn Phạm Thành Hưng 
+          4. Nguyễn Cao An
+          5. Lê Thanh Nhân
+          

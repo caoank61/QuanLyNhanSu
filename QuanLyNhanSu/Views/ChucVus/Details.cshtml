@@ -1,0 +1,28 @@
+﻿@model QuanLyNhanSu.Models.ChucVu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết chức vụ</h2>
+
+<div>
+    <h4>Thông tin chức vụ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên chức vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCV)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group row">
+    <div class="col-md-2">
+        <a href="@Url.Action("Index","ChucVus")" class="btn btn-primary">Trở lại</a>
+    </div>
+</div>

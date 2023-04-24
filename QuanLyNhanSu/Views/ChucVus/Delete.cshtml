@@ -1,0 +1,35 @@
+﻿@model QuanLyNhanSu.Models.ChucVu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa chức vụ</h2>
+
+<h3>Bạn có muốn xóa chức vụ "@Model.TenCV" không?</h3>
+<div>
+    <h4>Thông tin chức vụ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên chức vụ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCV)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+         <div class="form-group row" style="padding-top:10px;padding-left:10px">
+                <input type="submit" value="Xóa" class="btn btn-success" />
+            <div class="col-md-2">
+                <a href="@Url.Action("Index","ChucVus")" class="btn btn-primary">Trở lại</a>
+            </div>
+        </div>
+    }
+</div>

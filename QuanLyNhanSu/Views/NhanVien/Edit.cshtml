@@ -1,0 +1,83 @@
+﻿@model QuanLyNhanSu.Models.NhanVien
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listPB = ViewBag.IdPB as List<QuanLyNhanSu.Models.PhongBan>;
+    var listTDHV = ViewBag.IdTDHV as List<QuanLyNhanSu.Models.TrinhDoHocVan>;
+    var listCV = ViewBag.IdCV as List<QuanLyNhanSu.Models.ChucVu>;
+}
+
+<h2>Sửa thông tin nhân viên</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Thông tin nhân viên</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.IdTK)
+    @Html.HiddenFor(model => model.Email)
+    @Html.HiddenFor(model => model.SDT)
+    @Html.HiddenFor(model => model.GioiTinh)
+    @Html.HiddenFor(model => model.NgaySinh)
+    @Html.HiddenFor(model => model.QueQuan)
+    @Html.HiddenFor(model => model.DanToc)
+    @Html.HiddenFor(model => model.ChuyenNganh)
+    @Html.HiddenFor(model => model.IdTDHV)
+    @Html.HiddenFor(model => model.STK)
+    @Html.HiddenFor(model => model.NganHang)
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Họ tên</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-md-2">Bậc lương</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BacLuong, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+            @Html.ValidationMessageFor(model => model.BacLuong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-2">Phòng ban</div>
+        <div class="col-md-10">
+            <select name="IdPB" class="form-control">
+                @foreach (var item in listPB)
+                {
+                    <option value="@item.Id" @(Model.IdPB == item.Id ? "selected" : "")>@item.TenPhongBan</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-2">Chức vụ</div>
+        <div class="col-md-10">
+            <select name="IdCV" class="form-control">
+                @foreach (var item in listCV)
+                {
+                    <option value="@item.Id" @(Model.TaiKhoan.IdCV == item.Id ? "selected" : "")>@item.TenCV</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-2">Lương</div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control", Value = Model.Luong.ToString().Replace(".0000","") } })
+            @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row" style="padding-top:10px;padding-left:10px">
+        <input type="submit" value="Cập nhật" class="btn btn-success" />
+
+    </div>
+</div>
+}

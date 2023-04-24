@@ -1,0 +1,36 @@
+﻿@model QuanLyNhanSu.Models.ChucVu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sửa thông tin chức vụ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Thông tin chức vụ</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+          <div class = "control-label col-md-2">Tên chức vụ</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenCV, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenCV, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row" style="padding-top:10px;padding-left:10px">
+                <input type="submit" value="Cập nhật" class="btn btn-success" />
+            <div class="col-md-2">
+                <a href="@Url.Action("Index","ChucVus")" class="btn btn-primary">Trở lại</a>
+            </div>
+        </div>
+    </div>
+}
+

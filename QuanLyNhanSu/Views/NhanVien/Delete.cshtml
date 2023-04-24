@@ -1,0 +1,138 @@
+﻿@model QuanLyNhanSu.Models.NhanVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa nhân viên</h2>
+
+<h3>Bạn có muốn xóa nhân viên "@Model.HoTen" không ?</h3>
+<div>
+    <h4>Thông tin nhân viên</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @(Model.GioiTinh==true?"Nam":"Nữ")
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Model.NgaySinh.Value.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            Quê quán
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QueQuan)
+        </dd>
+
+        <dt>
+            Dân tộc
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanToc)
+        </dd>
+
+        <dt>
+            Bậc lương
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BacLuong)
+        </dd>
+
+        <dt>
+            Chuyên ngành
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuyenNganh)
+        </dd>
+
+        <dt>
+            Lương
+        </dt>
+
+        <dd>
+            @QuanLyNhanSu.Models.conver.ConvertToThousand64(Model.Luong) VNĐ
+        </dd>
+
+        <dt>
+            Số tài khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STK)
+        </dd>
+
+        <dt>
+            Ngân hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NganHang)
+        </dd>
+
+        <dt>
+            Phòng ban
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhongBan.TenPhongBan)
+        </dd>
+
+        <dt>
+            Trình độ học vấn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrinhDoHocVan.TrinhDo)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-group row" style="padding-top:10px;padding-left:10px">
+    <input type="submit" value="Xóa" class="btn btn-success" />
+    <div class="col-md-2">
+        <a href="@Url.Action("Index","NhanVien")" class="btn btn-primary">Trở lại</a>
+    </div>
+</div>
+    }
+</div>

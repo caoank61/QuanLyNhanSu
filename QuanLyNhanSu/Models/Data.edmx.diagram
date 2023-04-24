@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c0b37a940dc480a9cfe755d15610a4f" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.ChucVu" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.HopDong" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.NhanVien" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.PhongBan" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.sysdiagram" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.TaiKhoan" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyNhanSuModel.TrinhDoHocVan" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyNhanSuModel.FK__TaiKhoan__IdCV__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyNhanSuModel.FK__HopDong__IdNV__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyNhanSuModel.FK__NhanVien__IdPB__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyNhanSuModel.FK__NhanVien__IdTDHV__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyNhanSuModel.FK__NhanVien__IdTK__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

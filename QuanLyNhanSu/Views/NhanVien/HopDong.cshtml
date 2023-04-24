@@ -1,0 +1,111 @@
+﻿@model QuanLyNhanSu.Models.HopDong
+
+@{
+    ViewBag.Title = "HopDong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Model != null)
+{
+    <h2>Sửa thông tin hợp đồng</h2>
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Hợp đồng</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.IdNV)
+
+
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Loại hợp đồng</div>
+                <div class="col-md-10">
+                    <select name="LoaiHD" class="form-control">
+                        <option value="0">-- Chọn loại hợp đồng --</option>
+                        <option value="1" @(Model.LoaiHD == 1 ? "selected" : "")>Hợp đồng ngắn hạn</option>
+                        <option value="2" @(Model.LoaiHD == 2 ? "selected" : "")>Hợp đồng lâu dài</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Ngày kí</div>
+                <div class="col-md-10">
+                    <input name="NgayKi" value="@Model.NgayKi.Value.ToString("dd/MM/yyyy")" class="form-control" type="datetime" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Ngày kết thúc</div>
+                <div class="col-md-10">
+                    <input name="NgayKT" value="@Model.NgayKT.Value.ToString("dd/MM/yyyy")" class="form-control" type="datetime" />
+                </div>
+            </div>
+
+            <div class="form-group row" style="padding-top:10px;padding-left:10px">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+                <div class="col-md-2">
+                    <a href="@Url.Action("Index","NhanVien")" class="btn btn-primary">Trở lại</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h2>Thêm hợp đồng mới</h2>
+
+        <div class="form-horizontal">
+            <h4>Hợp đồng</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <input value="@ViewBag.Id" name="IdNV" hidden />
+
+
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Loại hợp đồng</div>
+                <div class="col-md-10">
+                    <select name="LoaiHD" class="form-control">
+                        <option value="0">-- Chọn loại hợp đồng --</option>
+                        <option value="1">Hợp đồng ngắn hạn</option>
+                        <option value="2">Hợp đồng lâu dài</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Ngày kí</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayKi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgayKi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">Ngày kết thúc</div>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayKT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgayKT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row" style="padding-top:10px;padding-left:10px">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+                <div class="col-md-2">
+                    <a href="@Url.Action("Index","NhanVien")" class="btn btn-primary">Trở lại</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+

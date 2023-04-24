@@ -1,0 +1,144 @@
+﻿@model IEnumerable<QuanLyNhanSu.Models.NhanVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var stt = 0;
+    var xoa = ViewBag.xoa;
+}
+
+<h2>Danh sách nhân viên</h2>
+
+<div class="form-group row">
+  
+        <a href="@Url.Action("Create","NhanVien")" class="btn btn-success">Thêm mới</a>
+ 
+    @if (xoa ==0)
+    {
+        <div class="col-md-1">
+            <a href="@Url.Action("Index","NhanVien",new {xoa=1})" class="btn btn-danger">Thùng rác</a>
+        </div>
+    }
+    else
+    {
+        <div class="col-md-1">
+            <a href="@Url.Action("Index","NhanVien")" class="btn btn-primary">Danh sách</a>
+        </div>
+    }
+
+</div>
+<table class="table table-striped table-bordered table-sm text-center" cellspacing="0" width="100%">
+
+    <tr>
+        <th>STT</th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+           Email
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+           Giới tính
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            Quê quán
+        </th>
+        <th>
+          Dân tộc
+        </th>
+        <th>
+            Bậc lương
+        </th>
+        <th>
+          Chuyên ngành
+        </th>
+        <th>
+           Lương
+        </th>
+        <th>
+            Số tài khoản
+        </th>
+        <th>
+            Ngân hàng
+        </th>
+        <th>
+            Phòng ban
+        </th>
+        <th>
+           Trình độ học vấn
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        stt++;
+        <tr>
+            <td>@stt</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @(item.GioiTinh == true ? "Nam" :"Nữ")
+            </td>
+            <td>
+                @item.NgaySinh.Value.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueQuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanToc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BacLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuyenNganh)
+            </td>
+            <td>
+                @QuanLyNhanSu.Models.conver.ConvertToThousand64_From_Float(Convert.ToInt32(item.Luong)) VNĐ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NganHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhongBan.TenPhongBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrinhDoHocVan.TrinhDo)
+            </td>
+            <td style="width:150px">
+                @if (xoa == 0)
+                {
+                    <a href="@Url.Action("HopDong", "NhanVien", new { id = item.Id })" class="btn btn-info btn-sm"><i class="far fa-file"></i></a>
+                    <a href="@Url.Action("Details", "NhanVien", new { id = item.Id })" class="btn btn-success btn-sm"><i class="fa fa-book"></i></a>
+                    <a href="@Url.Action("Edit", "NhanVien", new { id = item.Id })" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></a>
+                    <a href="@Url.Action("Delete", "NhanVien", new { id = item.Id })" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Reset", "NhanVien", new { id = item.TaiKhoan.Id })" class="btn btn-success btn-sm"><i class="fa fa-undo"></i></a>
+                    <a href="@Url.Action("DeleteEnd", "NhanVien", new { id = item.Id })" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></a>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
